@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="relative isolate overflow-hidden bg-gray-900 h-screen">
+    <div class="relative isolate overflow-hidden bg-gray-900 xl:h-screen">
       <svg
         class="absolute inset-0 -z-10 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
         aria-hidden="true">
@@ -28,14 +28,12 @@
           <img class="h-24" src="@/assets/img/logo.png" alt="Your Company">
           <h1 class="mt-10 text-4xl font-bold tracking-tight text-white sm:text-6xl">Erranders: Your Ultimate Campus
             Companion!</h1>
-          <p class="mt-6 text-lg leading-8 text-gray-300">Welcome to Erranders, where running errands becomes rewarding!
-            Say goodbye to long queues
-            and hello to convenience. Join our waitlist now to be among the first to experience a seamless way to handle
-            tasks and earn from them. Whether it's picking up lunch from your favorite spot or delivering packages
-            across
-            campus, Erranders has got you covered. Sign up today and be part of a vibrant community of student
-            entrepreneurs shaping the future of campus life!</p>
-          <form @submit.prevent="handleSubmit" class="flex items-center gap-x-4">
+          <p class="mt-6 text-lg leading-8 text-gray-300">Erranders transforms errands into rewards with its convenient
+            platform. Skip queues and join the waitlist for seamless task handling and earning opportunities. From lunch
+            pickups to campus deliveries, Erranders caters to your needs. Join today and become part of a dynamic
+            community shaping campus life!
+          </p>
+          <form @submit.prevent="handleSubmit" class="lg:flex space-y-3 lg:space-y-0 items-center gap-x-4">
             <div class="w-full">
               <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
               <div class="relative rounded-md shadow-sm">
@@ -51,9 +49,10 @@
                   placeholder="you@example.com">
               </div>
             </div>
-            <div class="pt-6">
-              <button type="button" :disabled="!isFormEmpty || processing"
-                class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{ processing ? 'processing' : 'Submit' }}</button>
+            <div class="pt-6 w-full lg:w-auto">
+              <button type="submit" :disabled="!isFormEmpty || processing"
+                class="rounded-md bg-indigo-600 w-full disabled:cursor-not-allowed disabled:opacity-25 lg:w-auto px-10 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{
+            processing ? 'processing' : 'Submit' }}</button>
             </div>
 
           </form>
@@ -74,24 +73,12 @@
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             alt="">
           <p class="mt-2 leading-loose text-gray-800 text-sm">
-            Hey there Erranders Enthusiast,
-
-            A massive thank you for hopping on board our waitlist! Your interest in Erranders means the world to us, and
-            we're beyond thrilled to have you join our journey to revolutionize the way deliveries are made.
-
-            Your support fuels our determination to craft the best possible experience for you and our community. We
-            promise to keep you in the loop every step of the way as we work tirelessly to bring Erranders to life.
-
-            Stay tuned for exclusive updates and early access opportunities. We can't wait to embark on this exciting
-            adventure together!
-
-            <!-- Cheers, -->
-            <!-- 
-            Marquis Abah.
-            Founder of Erranders. -->
+            Thank you for joining the Erranders waitlist! Your support means everything to us as we revolutionize
+            deliveries. We're committed to keeping you informed as we bring Erranders to life. Stay tuned for exclusive
+            updates and early access opportunities. Let's embark on this exciting adventure together!
           </p>
 
-          <p class="mt-2 text-gray-800 text-sm">
+          <p class="mt-2 text-gray-800 text-sm font-semibold">
             Best regards, <br>
             The Erranders Team
           </p>
@@ -109,7 +96,7 @@ const formData = ref({
 
 async function handleSubmit() {
   processing.value = true
-  const url = 'https://erranders-backend-waitlist.onrender.com/api/auth/signup';  // Your API endpoint
+  const url = 'https://erranders-waitlist-database.onrender.com/api/auth/signup';
   try {
     const response = await fetch(url, {
       method: 'POST',
