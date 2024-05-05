@@ -3,7 +3,7 @@ export default {
   target: "static",
   app: {
     head: {
-      title: "DocTrack NG",
+      title: "Erranders Lunch Waitlist",
       htmlAttrs: { lang: "en" },
       meta: [
         { charset: "utf-8" },
